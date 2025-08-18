@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Aluraflix</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <h1 class="titulo-principal">Aluraflix</h1>
+    </header>
+
+    <main class="secao-catalogo">
+        <div class="video-card">
+            <video class="video-player" controls>
+                <source src="videos/video1.mp4" type="video/mp4">
+                Seu navegador não suporta o formato de vídeo.
+            </video>
+            <div class="info-container">
+                <h2 class="titulo-video">Título do Vídeo 1</h2>
+                <p class="descricao-video">Uma breve descrição sobre o conteúdo do vídeo, como "Entrevista com o desenvolvedor."</p>
+            </div>
+        </div>
+
+        <div class="video-card">
+            <video class="video-player" controls>
+                <source src="videos/video2.mp4" type="video/mp4">
+                Seu navegador não suporta o formato de vídeo.
+            </video>
+            <div class="info-container">
+                <h2 class="titulo-video">Título do Vídeo 2</h2>
+                <p class="descricao-video">Descrição do vídeo, por exemplo: "Tutorial de CSS."</p>
+            </div>
+        </div>
+
+        </main>
+</body>
+</html>
+
+/* Estilos globais */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #212121; /* Cor de fundo escura */
+    color: #f0f0f0; /* Cor do texto clara */
+    margin: 0;
+    padding: 0;
+}
+
+.cabecalho {
+    background-color: #000;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 3px solid #E50914; /* Linha vermelha, cor da Netflix */
+}
+
+.titulo-principal {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #E50914; /* Cor vermelha para o título */
+}
+
+/* Seção de catálogo com Flexbox */
+.secao-catalogo {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+    justify-content: center; /* Centraliza os itens na linha */
+    gap: 20px; /* Espaço entre os cartões */
+    padding: 20px;
+}
+
+.video-card {
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+}
+
+.video-player {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.info-container {
+    padding: 15px;
+}
+
+.titulo-video {
+    font-size: 1.4rem;
+    margin-top: 0;
+    color: #fff;
+}
+
+.descricao-video {
+    font-size: 0.9rem;
+    color: #ccc;
+    line-height: 1.5;
+}
