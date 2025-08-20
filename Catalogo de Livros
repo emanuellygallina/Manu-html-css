@@ -1,0 +1,180 @@
+```
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendador de Livros</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        select, button {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .book-result {
+            margin-top: 20px;
+            padding: 15px;
+            border-top: 1px solid #eee;
+            display: none;
+        }
+        .book-cover {
+            width: 150px;
+            height: 200px;
+            object-fit: cover;
+            margin-right: 20px;
+            float: left;
+        }
+        .book-info {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Recomendador de Livros</h1>
+        <p>Selecione um gênero para receber uma recomendação:</p>
+        
+        <select id="genre">
+            <option value="">Selecione um gênero...</option>
+            <option value="ficcao">Ficção Científica</option>
+            <option value="fantasia">Fantasia</option>
+            <option value="romance">Romance</option>
+            <option value="misterio">Mistério</option>
+            <option value="biografia">Biografia</option>
+        </select>
+        
+        <button id="recommend">Recomendar Livro</button>
+        
+        <div class="book-result" id="result">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/800dd7ef-f9d1-429d-93db-79597dc6ee98.png" alt="Capa de livro com design minimalista em tons azuis" class="book-cover">
+            <div class="book-info">
+                <h2 id="book-title"></h2>
+                <p><strong>Autor:</strong> <span id="book-author"></span></p>
+                <p id="book-description"></p>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+
+    <script>
+        // Banco de dados de livros por gênero
+        const bookDatabase = {
+            ficcao: [
+                {
+                    title: "Duna",
+                    author: "Frank Herbert",
+                    description: "Um clássico da ficção científica sobre política, religião e ecologia no planeta desértico Arrakis."
+                },
+                {
+                    title: "1984",
+                    author: "George Orwell",
+                    description: "Uma distopia sobre vigilância governamental e controle da sociedade."
+                }
+            ],
+            fantasia: [
+                {
+                    title: "O Senhor dos Anéis",
+                    author: "J.R.R. Tolkien",
+                    description: "A épica jornada de Frodo para destruir o Um Anel e salvar a Terra-média."
+                },
+                {
+                    title: "Harry Potter e a Pedra Filosofal",
+                    author: "J.K. Rowling",
+                    description: "O começo da jornada do jovem bruxo Harry Potter em Hogwarts."
+                }
+            ],
+            romance: [
+                {
+                    title: "Orgulho e Preconceito",
+                    author: "Jane Austen",
+                    description: "A história de Elizabeth Bennet e Mr. Darcy em uma crítica social da Inglaterra do século XIX."
+                },
+                {
+                    title: "Amor nos Tempos do Cólera",
+                    author: "Gabriel García Márquez",
+                    description: "Um romance sobre amor, tempo e destino que atravessa décadas."
+                }
+            ],
+            misterio: [
+                {
+                    title: "Assassinato no Expresso do Oriente",
+                    author: "Agatha Christie",
+                    description: "O detetive Hercule Poirot investiga um assassinato a bordo de um trem de luxo."
+                },
+                {
+                    title: "O Código da Vinci",
+                    author: "Dan Brown",
+                    description: "Uma trama de mistério envolvendo sociedades secretas e códigos antigos."
+                }
+            ],
+            biografia: [
+                {
+                    title: "Minha História",
+                    author: "Michelle Obama",
+                    description: "Memórias da ex-primeira-dama dos EUA sobre sua vida e tempo na Casa Branca."
+                },
+                {
+                    title: "Sapiens",
+                    author: "Yuval Noah Harari",
+                    description: "Uma breve história da humanidade, desde os primeiros seres humanos até hoje."
+                }
+            ]
+        };
+
+        document.getElementById('recommend').addEventListener('click', function() {
+            const genre = document.getElementById('genre').value;
+            const resultDiv = document.getElementById('result');
+            
+            if (!genre) {
+                alert('Por favor, selecione um gênero primeiro!');
+                return;
+            }
+            
+            const books = bookDatabase[genre];
+            const randomBook = books[Math.floor(Math.random() * books.length)];
+            
+            document.getElementById('book-title').textContent = randomBook.title;
+            document.getElementById('book-author').textContent = randomBook.author;
+            document.getElementById('book-description').textContent = randomBook.description;
+            
+            // Atualiza a imagem com placeholder específico
+            const imgElement = document.querySelector('.book-cover');
+            imgElement.src = `https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/213411bd-c3eb-445d-b975-f43d109f0182.png /g, '+')}`;
+            imgElement.alt = `Capa do livro ${randomBook.title}`;
+            
+            resultDiv.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
+```
